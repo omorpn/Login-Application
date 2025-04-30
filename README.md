@@ -6,7 +6,7 @@ This project is a minimal ASP.NET Core Web API that processes login requests via
 
 ## 🚀 Requirements
 
-- .NET 6 or higher SDK
+- .NET 8 or higher SDK
 - A tool like Postman or `curl` to test requests
 
 ---
