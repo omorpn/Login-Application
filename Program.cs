@@ -1,15 +1,19 @@
+using Login_Application;
+
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
 app.UseRouting();
+app.UseCustomLogin();
 app.UseEndpoints(endpoint =>
 {
-    _=endpoint.MapPost("/", async context =>
+    _=endpoint.MapPost("/login", async context =>
     {
         string userEmail = "admin@example.com";
         string userPassword = "admin1234";
 
-        List<string> errors = new();
+        List<string> errors = [];
+
             string userQueryEmail= context.Request.Query["email"].ToString(); 
         string userQueryPassword= context.Request.Query["password"].ToString();
 
@@ -33,7 +37,7 @@ app.UseEndpoints(endpoint =>
         bool isPasswordMatch = string.Equals(userQueryPassword, userPassword);
         if(isEmailMatch && isPasswordMatch)
         {
-            await context.Response.WriteAsync("Successful loging");
+            await context.Response.WriteAsync("Successful login");
 
         }
         else
